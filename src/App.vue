@@ -1,7 +1,12 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker" />
-    <AddTask @add-task="addTask" />
+    <Header @toggle-add-task="toggleAddTask" title="Task Tracker" />
+    <div v-if="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
+    <!-- <div v-show="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div> -->
     <Tasks
       @toggle-reminder="toggleReminder"
       @delete-task="deleteTask"
@@ -36,12 +41,16 @@ export default {
         task.id === id ? { ...task, reminder: !task.reminder } : task
       );
     },
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
+    },
   },
 
   //equivalent to state in react
   data() {
     return {
       tasks: [],
+      showAddTask: false,
     };
   },
 

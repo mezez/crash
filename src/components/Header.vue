@@ -1,7 +1,11 @@
 <template>
   <header>
     <h1>{{ title }}</h1>
-    <Button text="Add Task" colour="green" />
+    <Button
+      @toggle-add-task="$emit('toggle-add-task')"
+      text="Add Task"
+      colour="green"
+    />
   </header>
 </template>
 
@@ -20,6 +24,7 @@ export default {
   components: {
     Button,
   },
+  emits: ["toggle-add-task"],
   // setup() {
 
   // },
