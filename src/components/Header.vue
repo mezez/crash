@@ -1,7 +1,10 @@
 <template>
   <header>
     <h1>{{ title }}</h1>
+
+    <!--button is displayed using the computed property in the scripts below. only shoy add task on homepage -->
     <Button
+      v-show="homePage"
       @btn-click="$emit('toggle-add-task')"
       :text="showAddTask ? 'Close' : 'Add Task'"
       :colour="showAddTask ? 'red' : 'green'"
@@ -24,6 +27,15 @@ export default {
   },
   components: {
     Button,
+  },
+  computed: {
+    homePage() {
+      if (this.$route.path === "/") {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
   emits: ["btn-click"],
   // setup() {
