@@ -53,7 +53,7 @@ export default {
       const taskToToggle = await this.fetchTask(id);
       const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
-      const res = await fetch(`api/tasks/${id}`, {
+      const res = await fetch(`http://localhost:5005/tasks//${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
